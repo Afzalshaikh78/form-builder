@@ -1,0 +1,2 @@
+# form-builder
+This project is a simple React Form Builder built using React, TypeScript, and Zustand for state management. It allows users to dynamically create form fields like text inputs, number fields, password fields, textareas, date pickers, and file uploads. Users can add new fields by specifying a label and selecting a field type, edit the field values live, remove individual fields, or reset the entire form with one click. 
