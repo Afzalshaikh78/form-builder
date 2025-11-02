@@ -3,7 +3,6 @@ import { useFormStore } from "../store";
 import { useState } from "react";
 import FormField from "./FormField";
 
-
 interface newField {
   label: string;
   type: "text" | "number" | "textarea" | "password" | "date" | "file";
@@ -23,13 +22,14 @@ const FormBuilider = () => {
   const handleAddField = () => {
     addField(newField);
     setNewField({ label: "", type: "text", value: "" });
-  }
+  };
 
-  const handleFieldChange = (e:ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleFieldChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setNewField((prev) => ({ ...prev, [name]: value }));
   };
-
 
   const handleFieldUpdate = (index: number, updatedField: newField) => {
     updateField(index, updatedField);
@@ -39,11 +39,6 @@ const FormBuilider = () => {
     removeField(index);
   };
 
-
-
-
-
-
   return (
     <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded">
       <h1 className="text-2xl font-bold mb-5 text-center">Form Builder</h1>
@@ -52,14 +47,15 @@ const FormBuilider = () => {
           type="text"
           name="label"
           placeholder="filed label"
-          value={newField.label} onChange={handleFieldChange}
+          value={newField.label}
+          onChange={handleFieldChange}
           className="p-2 mb-2 border border-gray-300 rounded-lg "
         />
 
         <select
           name="type"
           value={newField.type}
-           onChange={handleFieldChange}
+          onChange={handleFieldChange}
           className="p-2 mb-4 border border-gray-300 rounded-lg"
         >
           <option value="text">Text</option>
@@ -88,9 +84,15 @@ const FormBuilider = () => {
         </div>
       </div>
 
-      <form >
+      <form>
         {formFields.map((field, index) => (
-          <FormField key={index} field={field} onUpdate={handleFieldUpdate} onRemove={handleFieldRemove} index={index} />
+          <FormField
+            key={index}
+            field={field}
+            onUpdate={handleFieldUpdate}
+            onRemove={handleFieldRemove}
+            index={index}
+          />
         ))}
       </form>
     </div>
